@@ -1,0 +1,60 @@
+ syntax = "proto3";
+
+ option java_multiple_files = true;
+ option java_package = "customerAdminService";
+ option java_outer_classname = "customerAdminServiceImpl";
+
+ 	/////customerAdminService
+ package CustomerAdminService;
+
+ service CustomerAdminService {
+
+ 	////Client streaming
+ 	rpc registerCustomers(stream RegisterRequest) returns (RegisterResponse){}
+
+ 	////Server streaming
+ 	rpc displayCustomers(DisplayRequest) returns (stream DisplayResponse){}
+
+ 	////Unary call
+ 	rpc calculatePrice(CalculateRequest) returns (CalculateResponse){}
+ }
+
+ ////Client streaming
+ message RegisterRequest{
+
+ 	string name = 1;
+ 	string age = 2;
+ 	string gender = 3;
+ }
+
+ message RegisterResponse{
+ 	string result = 1;
+ }
+
+ ////Server Streaming
+ message DisplayRequest{
+ 	string customerList = 1;
+ }
+
+ message DisplayResponse{
+ 	string allCustomers = 1;
+ }
+
+ /////Unary Call
+ message CalculateRequest {
+ 	string customerName = 1;
+ 	int32 numberVehicle = 2;
+
+  	enum VehicleType{
+
+  		DIESEL = 0;
+  		ELECTRIC = 1;
+  		PETROL = 2;
+ 	}
+
+  	VehicleType vehicleType = 3;
+ }
+
+ message CalculateResponse{
+ 	string message = 2;
+ }
