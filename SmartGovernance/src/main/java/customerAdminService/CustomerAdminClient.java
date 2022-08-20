@@ -56,8 +56,8 @@ public class CustomerAdminClient {
 		
 		StreamObserver<RegisterRequest> requestObserver = adminAsyncStub.registerCustomers(responseObserver);
 		requestObserver.onNext(RegisterRequest.newBuilder()
-											.setName("Aron Edge")
-											.setAge("35")
+											.setName("Giulio Conte")
+											.setAge("55")
 											.setGender("Male")
 											.build());	
 				

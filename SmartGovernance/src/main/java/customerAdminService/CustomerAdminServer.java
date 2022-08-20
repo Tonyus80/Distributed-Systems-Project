@@ -3,6 +3,8 @@ package customerAdminService;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.InetAddress;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Properties;
 import java.io.InputStream;
@@ -16,20 +18,20 @@ import customerAdminService.CalculateRequest.VehicleType;
 import customerAdminService.CustomerAdminServiceGrpc.CustomerAdminServiceImplBase;
 
 
-public class CustomerAdminService extends CustomerAdminServiceImplBase{
+public class CustomerAdminServer extends CustomerAdminServiceImplBase{
 
 	private StreamObserver<RegisterResponse> responseObserver;
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-CustomerAdminService custAdminService = new CustomerAdminService();
+CustomerAdminServer custAdminService = new CustomerAdminServer();
 		
 		Properties adminProp = custAdminService.getAdminProperties();
 		
 		custAdminService.registeringCustomerByAdminService(adminProp);
 		
-		int adminPort = Integer.valueOf( adminProp.getProperty("administration_service_port")); //#50052
+		int adminPort = Integer.parseInt( adminProp.getProperty("administration_service_port")); //#50052
 		
 		try {
 			Server adminServer = ServerBuilder.forPort(adminPort)
@@ -42,14 +44,11 @@ CustomerAdminService custAdminService = new CustomerAdminService();
 			
 			adminServer.awaitTermination();
 			
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InterruptedException e) {
+		} catch (IOException | InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	
+
 	}
 	
 	private Properties getAdminProperties() {
@@ -57,7 +56,7 @@ CustomerAdminService custAdminService = new CustomerAdminService();
 		Properties adminProp = null;
 		
 		//Define the input properties path
-		try (InputStream adminInput = new FileInputStream("src/main/resources/customerAdmin.properties")){
+		try (InputStream adminInput = Files.newInputStream(Paths.get("src/main/resources/customerAdmin.properties"))){
 			
 			adminProp = new Properties();
 			
@@ -92,7 +91,7 @@ public void registeringCustomerByAdminService(Properties adminProp) {
 			//Assume that there is registering an http server
 			String administration_service_type = adminProp.getProperty("administration_service_type"); //"_administration._tcp.local.";
 			String administration_service_name = adminProp.getProperty("administration_service_name"); //"customer_administration_service";
-			int administration_service_port = Integer.valueOf( adminProp.getProperty("administration_service_port")); //#50052;
+			int administration_service_port = Integer.parseInt( adminProp.getProperty("administration_service_port")); //#50052;
 			String administration_service_description_properties = adminProp.getProperty("administration_service_description"); //"path=index.html";
 			
 			//Register a service			
@@ -209,7 +208,7 @@ public void registeringCustomerByAdminService(Properties adminProp) {
 		float totalPrice = (float) 0.00;
 		String message = "The total price of vehicle for customer:\n " + request.getCustomerName() + 
 															", for: "+ request.getNumberVehicle() + 
-															" vehicle, type: " + request.getVehicleType() + " vehicle is: € ";
+															" vehicle, type: " + request.getVehicleType() + " is: € ";
 		
 		
 		String result = "";		
@@ -241,7 +240,7 @@ public void registeringCustomerByAdminService(Properties adminProp) {
 		responseObserver.onNext(reply);			
 		responseObserver.onCompleted();		
 		System.out.println("Customer Vehicle price calculation request completed.");
-		System.out.println("----------------------------------------------------------\n");		
+		System.out.println("-----------------------------------------------------------------------\n");
 	}
 }
 
