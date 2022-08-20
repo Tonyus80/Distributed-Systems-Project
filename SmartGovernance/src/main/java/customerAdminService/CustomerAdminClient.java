@@ -80,7 +80,7 @@ public class CustomerAdminClient {
 		DisplayRequest request = DisplayRequest.newBuilder().setCustomerList("").build();		
 		
 		
-		// try catch for error handling
+		// try catch, error handling
 		try {
 			// while the server is still responding/ sending data back, keep printing data
 			Iterator<DisplayResponse> responses = adminBlockingStub.displayCustomers(request);

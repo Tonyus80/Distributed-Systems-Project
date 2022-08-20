@@ -1,5 +1,6 @@
 package customerAdminService;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.util.ArrayList;
@@ -12,23 +13,25 @@ import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
 import customerAdminService.CalculateRequest.VehicleType;
+import customerAdminService.CustomerAdminServiceGrpc.CustomerAdminServiceImplBase;
 
-public class CustomerAdminService extends CustomerAdminServiceServiceImplBase {
+
+public class CustomerAdminService extends  CustomerAdminServiceImplBase{
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-CustomerAdminService CustomerAdminService = new CustomerAdminService();
+CustomerAdminService custAdminService = new CustomerAdminService();
 		
-		Properties adminProp = customerAdminServer.getAdminProperties();
+		Properties adminProp = custAdminService.getAdminProperties();
 		
-		customerAdminServer.registeringCustomerByAdminService(adminProp);
+		custAdminService.registeringCustomerByAdminService(adminProp);
 		
 		int adminPort = Integer.valueOf( adminProp.getProperty("administration_service_port")); //#50052
 		
 		try {
 			Server adminServer = ServerBuilder.forPort(adminPort)
-											.addService(customerAdminServer)
+											.addService(custAdminService)
 											.build()
 											.start();
 			
@@ -46,6 +49,33 @@ CustomerAdminService CustomerAdminService = new CustomerAdminService();
 		}
 	
 	}
+	
+	private Properties getAdminProperties() {
+		
+		Properties adminProp = null;
+		
+		//Define the input properties path
+		try (InputStream adminInput = new FileInputStream("src/main/resources/patient_administration.properties")){
+			
+			adminProp = new Properties();
+			
+			//load a properties file
+			adminProp.load(adminInput);		
+			
+			//get the properties value and print it out
+			System.out.println(" Customer Admin Service properties ...");
+			System.out.println("\t service_type: " + adminProp.getProperty("administration_service_type"));
+			System.out.println("\t service_name: " + adminProp.getProperty("administration_service_name"));					
+			System.out.println("\t service_description: " + adminProp.getProperty("administration_service_description"));
+			System.out.println("\t service_port: " + adminProp.getProperty("administration_service_port"));
+											
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		return adminProp;
+	}	
+	
 	
 public void registeringCustomerByAdminService(Properties adminProp) {		
 		
@@ -181,19 +211,19 @@ public void registeringCustomerByAdminService(Properties adminProp) {
 		
 		String result = "";		
 		
-		if (request.getVehicleType()==vehicleType.DIESEL) {	
+		if (request.getVehicleType()==VehicleType.DIESEL) {	
 			pricePerVehicle = (float) 100.00;
 			totalPrice = request.getNumberVehicle() * (float) pricePerVehicle;
 			result = message + totalPrice + "\n";			
 		}
 		
-		else if (request.getVehicleType()==vehicleType.ELECTRIC) {
+		else if (request.getVehicleType()==VehicleType.ELECTRIC) {
 			pricePerVehicle = (float) 200.00;
 			totalPrice = request.getNumberVehicle() * (float) pricePerVehicle;
 			result = message + totalPrice + "\n";			
 		}
 		
-		else if (request.getVehicleType()==vehicleType.PETROL) {
+		else if (request.getVehicleType()==VehicleType.PETROL) {
 			
 			pricePerVehicle = (float) 500.00;
 			totalPrice = request.getNumberVehicle() * (float) pricePerVehicle;
