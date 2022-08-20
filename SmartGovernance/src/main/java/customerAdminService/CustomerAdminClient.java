@@ -99,7 +99,6 @@ public class CustomerAdminClient {
 			e.printStackTrace();
 		}
 	}
-	
 	////Unary Call
 	////Calculate Customer tax price
 	public static void calculatePrice () {
