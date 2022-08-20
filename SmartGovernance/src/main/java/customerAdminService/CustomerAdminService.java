@@ -16,7 +16,9 @@ import customerAdminService.CalculateRequest.VehicleType;
 import customerAdminService.CustomerAdminServiceGrpc.CustomerAdminServiceImplBase;
 
 
-public class CustomerAdminService extends  CustomerAdminServiceImplBase{
+public class CustomerAdminService extends CustomerAdminServiceImplBase{
+
+	private StreamObserver<RegisterResponse> responseObserver;
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -55,7 +57,7 @@ CustomerAdminService custAdminService = new CustomerAdminService();
 		Properties adminProp = null;
 		
 		//Define the input properties path
-		try (InputStream adminInput = new FileInputStream("src/main/resources/patient_administration.properties")){
+		try (InputStream adminInput = new FileInputStream("src/main/resources/customerAdmin.properties")){
 			
 			adminProp = new Properties();
 			
@@ -123,8 +125,9 @@ public void registeringCustomerByAdminService(Properties adminProp) {
 		
 	////Client streaming
 	////Customer Registration 
-	public StreamObserver<RegisterRequest> registerCustomer(StreamObserver<RegisterResponse> responseObserver){
-		
+	public StreamObserver<RegisterRequest> registerCustomers(StreamObserver<RegisterResponse> responseObserver){
+		this.responseObserver = responseObserver;///test
+
 		return new StreamObserver<RegisterRequest>() {
 
 			@Override
@@ -160,12 +163,12 @@ public void registeringCustomerByAdminService(Properties adminProp) {
 	
 	////Server streaming
 	////Show list of Customer
-	public void displayCustomer(DisplayRequest request, StreamObserver<DisplayResponse> responseObserver) {
+	public void displayCustomers(DisplayRequest request, StreamObserver<DisplayResponse> responseObserver) {
 		
 		System.out.print("Receiving Customer list display request,\n\n" + request.getCustomerList());
 
 		ArrayList<String> customerList = new ArrayList<String>();
-		customerList.add("Customer Name: Gerry Boyle, Age: 51, Gender: male");
+		customerList.add("Customer Name: Aron Edge, Age: 35, Gender: male");
 		customerList.add("Customer Name: Laura Smit, Age: 31, Gender: female");		
 		customerList.add("Customer Name: Patrick Summer, Age: 67, Gender: male");
 		customerList.add("Customer Name: Winnie Gala, Age: 22, Gender: female");
@@ -196,17 +199,17 @@ public void registeringCustomerByAdminService(Properties adminProp) {
 	//Calculate Vehicle price
 	public void calculatePrice(CalculateRequest request, StreamObserver<CalculateResponse> responseObserver) {		
 		
-		System.out.println("Receiving Customer Vehicle Type price calculation request for,\nCustomer Name: " + request.getCustomerName()
-																				+ ", for: " + request.getNumberVehicle() 
-																				+" days, in a: " + request.getVehicleType() + " room.\n");
+		System.out.println("Receiving Customer Vehicle Type, requesting price calculation for,\nCustomer Name: " + request.getCustomerName()
+																				+ ", has: " + request.getNumberVehicle() 
+																				+" vehicle, with fuel type: " + request.getVehicleType() + " .....\n");
 		
 		@SuppressWarnings("unused")
 		String customerName = "";
 		float pricePerVehicle = (float) 0.00;
 		float totalPrice = (float) 0.00;
-		String message = "The total vehicle price for the customer:\n " + request.getCustomerName() + 
+		String message = "The total price of vehicle for customer:\n " + request.getCustomerName() + 
 															", for: "+ request.getNumberVehicle() + 
-															" days, in a: " + request.getVehicleType() + " vehicle is: € ";
+															" vehicle, type: " + request.getVehicleType() + " vehicle is: € ";
 		
 		
 		String result = "";		
@@ -236,7 +239,6 @@ public void registeringCustomerByAdminService(Properties adminProp) {
 		
 		CalculateResponse reply = CalculateResponse.newBuilder().setMessage(result).build();
 		responseObserver.onNext(reply);			
-		
 		responseObserver.onCompleted();		
 		System.out.println("Customer Vehicle price calculation request completed.");
 		System.out.println("----------------------------------------------------------\n");		

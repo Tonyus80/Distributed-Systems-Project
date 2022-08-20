@@ -27,7 +27,7 @@ public class CustomerAdminClient {
 		adminAsyncStub = CustomerAdminServiceGrpc.newStub(adminChannel);
 		
 		registerCustomer();
-		showCustomers();
+		displayCustomers();
 		calculatePrice();
 	}	
 	
@@ -75,7 +75,7 @@ public class CustomerAdminClient {
 	
 	////Server Streaming
 	////Display Customer List
-	public static void showCustomers() {
+	public static void displayCustomers() {
 		//creating request to send the Customer list
 		DisplayRequest request = DisplayRequest.newBuilder().setCustomerList("").build();		
 		
@@ -103,7 +103,7 @@ public class CustomerAdminClient {
 	////Calculate Customer tax price
 	public static void calculatePrice () {
 					
-		int numVehicle = (int) 2;
+		int numVehicle = (int) 1;
 		String customerName = "Laura Smit";
 			
 		CalculateRequest request = CalculateRequest.newBuilder().setCustomerName(customerName).setNumberVehicle(numVehicle).build();
