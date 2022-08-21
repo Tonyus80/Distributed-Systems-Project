@@ -2,12 +2,12 @@
 
  option java_multiple_files = true;
  option java_package = "co2MonitoringService";
- option java_outer_classname = "co2MonitoringServiceImpl";
+ option java_outer_classname = "Co2MonitoringServiceImpl";
 
   //package patientMonitoringService
  package co2MonitoringService;
 
- service co2MonitoringService {
+ service Co2MonitoringService {
 
  	//Unary Call
  	rpc monitoringDeviceOnOff(DeviceRequest) returns (DeviceResponse){}

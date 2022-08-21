@@ -20,11 +20,11 @@ import static io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall;
 @javax.annotation.Generated(
     value = "by gRPC proto compiler (version 1.15.0)",
     comments = "Source: co2Monitoring.proto")
-public final class co2MonitoringServiceGrpc {
+public final class Co2MonitoringServiceGrpc {
 
-  private co2MonitoringServiceGrpc() {}
+  private Co2MonitoringServiceGrpc() {}
 
-  public static final String SERVICE_NAME = "co2MonitoringService.co2MonitoringService";
+  public static final String SERVICE_NAME = "co2MonitoringService.Co2MonitoringService";
 
   // Static method descriptors that strictly reflect the proto.
   private static volatile io.grpc.MethodDescriptor<co2MonitoringService.DeviceRequest,
@@ -38,20 +38,20 @@ public final class co2MonitoringServiceGrpc {
   public static io.grpc.MethodDescriptor<co2MonitoringService.DeviceRequest,
       co2MonitoringService.DeviceResponse> getMonitoringDeviceOnOffMethod() {
     io.grpc.MethodDescriptor<co2MonitoringService.DeviceRequest, co2MonitoringService.DeviceResponse> getMonitoringDeviceOnOffMethod;
-    if ((getMonitoringDeviceOnOffMethod = co2MonitoringServiceGrpc.getMonitoringDeviceOnOffMethod) == null) {
-      synchronized (co2MonitoringServiceGrpc.class) {
-        if ((getMonitoringDeviceOnOffMethod = co2MonitoringServiceGrpc.getMonitoringDeviceOnOffMethod) == null) {
-          co2MonitoringServiceGrpc.getMonitoringDeviceOnOffMethod = getMonitoringDeviceOnOffMethod = 
+    if ((getMonitoringDeviceOnOffMethod = Co2MonitoringServiceGrpc.getMonitoringDeviceOnOffMethod) == null) {
+      synchronized (Co2MonitoringServiceGrpc.class) {
+        if ((getMonitoringDeviceOnOffMethod = Co2MonitoringServiceGrpc.getMonitoringDeviceOnOffMethod) == null) {
+          Co2MonitoringServiceGrpc.getMonitoringDeviceOnOffMethod = getMonitoringDeviceOnOffMethod = 
               io.grpc.MethodDescriptor.<co2MonitoringService.DeviceRequest, co2MonitoringService.DeviceResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
-                  "co2MonitoringService.co2MonitoringService", "monitoringDeviceOnOff"))
+                  "co2MonitoringService.Co2MonitoringService", "monitoringDeviceOnOff"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   co2MonitoringService.DeviceRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   co2MonitoringService.DeviceResponse.getDefaultInstance()))
-                  .setSchemaDescriptor(new co2MonitoringServiceMethodDescriptorSupplier("monitoringDeviceOnOff"))
+                  .setSchemaDescriptor(new Co2MonitoringServiceMethodDescriptorSupplier("monitoringDeviceOnOff"))
                   .build();
           }
         }
@@ -70,20 +70,20 @@ public final class co2MonitoringServiceGrpc {
   public static io.grpc.MethodDescriptor<co2MonitoringService.Co2Request,
       co2MonitoringService.Co2Response> getCo2EmissionMethod() {
     io.grpc.MethodDescriptor<co2MonitoringService.Co2Request, co2MonitoringService.Co2Response> getCo2EmissionMethod;
-    if ((getCo2EmissionMethod = co2MonitoringServiceGrpc.getCo2EmissionMethod) == null) {
-      synchronized (co2MonitoringServiceGrpc.class) {
-        if ((getCo2EmissionMethod = co2MonitoringServiceGrpc.getCo2EmissionMethod) == null) {
-          co2MonitoringServiceGrpc.getCo2EmissionMethod = getCo2EmissionMethod = 
+    if ((getCo2EmissionMethod = Co2MonitoringServiceGrpc.getCo2EmissionMethod) == null) {
+      synchronized (Co2MonitoringServiceGrpc.class) {
+        if ((getCo2EmissionMethod = Co2MonitoringServiceGrpc.getCo2EmissionMethod) == null) {
+          Co2MonitoringServiceGrpc.getCo2EmissionMethod = getCo2EmissionMethod = 
               io.grpc.MethodDescriptor.<co2MonitoringService.Co2Request, co2MonitoringService.Co2Response>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
               .setFullMethodName(generateFullMethodName(
-                  "co2MonitoringService.co2MonitoringService", "co2Emission"))
+                  "co2MonitoringService.Co2MonitoringService", "co2Emission"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   co2MonitoringService.Co2Request.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   co2MonitoringService.Co2Response.getDefaultInstance()))
-                  .setSchemaDescriptor(new co2MonitoringServiceMethodDescriptorSupplier("co2Emission"))
+                  .setSchemaDescriptor(new Co2MonitoringServiceMethodDescriptorSupplier("co2Emission"))
                   .build();
           }
         }
@@ -94,29 +94,29 @@ public final class co2MonitoringServiceGrpc {
   /**
    * Creates a new async stub that supports all call types for the service
    */
-  public static co2MonitoringServiceStub newStub(io.grpc.Channel channel) {
-    return new co2MonitoringServiceStub(channel);
+  public static Co2MonitoringServiceStub newStub(io.grpc.Channel channel) {
+    return new Co2MonitoringServiceStub(channel);
   }
 
   /**
    * Creates a new blocking-style stub that supports unary and streaming output calls on the service
    */
-  public static co2MonitoringServiceBlockingStub newBlockingStub(
+  public static Co2MonitoringServiceBlockingStub newBlockingStub(
       io.grpc.Channel channel) {
-    return new co2MonitoringServiceBlockingStub(channel);
+    return new Co2MonitoringServiceBlockingStub(channel);
   }
 
   /**
    * Creates a new ListenableFuture-style stub that supports unary calls on the service
    */
-  public static co2MonitoringServiceFutureStub newFutureStub(
+  public static Co2MonitoringServiceFutureStub newFutureStub(
       io.grpc.Channel channel) {
-    return new co2MonitoringServiceFutureStub(channel);
+    return new Co2MonitoringServiceFutureStub(channel);
   }
 
   /**
    */
-  public static abstract class co2MonitoringServiceImplBase implements io.grpc.BindableService {
+  public static abstract class Co2MonitoringServiceImplBase implements io.grpc.BindableService {
 
     /**
      * <pre>
@@ -160,20 +160,20 @@ public final class co2MonitoringServiceGrpc {
 
   /**
    */
-  public static final class co2MonitoringServiceStub extends io.grpc.stub.AbstractStub<co2MonitoringServiceStub> {
-    private co2MonitoringServiceStub(io.grpc.Channel channel) {
+  public static final class Co2MonitoringServiceStub extends io.grpc.stub.AbstractStub<Co2MonitoringServiceStub> {
+    private Co2MonitoringServiceStub(io.grpc.Channel channel) {
       super(channel);
     }
 
-    private co2MonitoringServiceStub(io.grpc.Channel channel,
+    private Co2MonitoringServiceStub(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
     }
 
     @java.lang.Override
-    protected co2MonitoringServiceStub build(io.grpc.Channel channel,
+    protected Co2MonitoringServiceStub build(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
-      return new co2MonitoringServiceStub(channel, callOptions);
+      return new Co2MonitoringServiceStub(channel, callOptions);
     }
 
     /**
@@ -201,20 +201,20 @@ public final class co2MonitoringServiceGrpc {
 
   /**
    */
-  public static final class co2MonitoringServiceBlockingStub extends io.grpc.stub.AbstractStub<co2MonitoringServiceBlockingStub> {
-    private co2MonitoringServiceBlockingStub(io.grpc.Channel channel) {
+  public static final class Co2MonitoringServiceBlockingStub extends io.grpc.stub.AbstractStub<Co2MonitoringServiceBlockingStub> {
+    private Co2MonitoringServiceBlockingStub(io.grpc.Channel channel) {
       super(channel);
     }
 
-    private co2MonitoringServiceBlockingStub(io.grpc.Channel channel,
+    private Co2MonitoringServiceBlockingStub(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
     }
 
     @java.lang.Override
-    protected co2MonitoringServiceBlockingStub build(io.grpc.Channel channel,
+    protected Co2MonitoringServiceBlockingStub build(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
-      return new co2MonitoringServiceBlockingStub(channel, callOptions);
+      return new Co2MonitoringServiceBlockingStub(channel, callOptions);
     }
 
     /**
@@ -230,20 +230,20 @@ public final class co2MonitoringServiceGrpc {
 
   /**
    */
-  public static final class co2MonitoringServiceFutureStub extends io.grpc.stub.AbstractStub<co2MonitoringServiceFutureStub> {
-    private co2MonitoringServiceFutureStub(io.grpc.Channel channel) {
+  public static final class Co2MonitoringServiceFutureStub extends io.grpc.stub.AbstractStub<Co2MonitoringServiceFutureStub> {
+    private Co2MonitoringServiceFutureStub(io.grpc.Channel channel) {
       super(channel);
     }
 
-    private co2MonitoringServiceFutureStub(io.grpc.Channel channel,
+    private Co2MonitoringServiceFutureStub(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
     }
 
     @java.lang.Override
-    protected co2MonitoringServiceFutureStub build(io.grpc.Channel channel,
+    protected Co2MonitoringServiceFutureStub build(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
-      return new co2MonitoringServiceFutureStub(channel, callOptions);
+      return new Co2MonitoringServiceFutureStub(channel, callOptions);
     }
 
     /**
@@ -266,10 +266,10 @@ public final class co2MonitoringServiceGrpc {
       io.grpc.stub.ServerCalls.ServerStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.ClientStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.BidiStreamingMethod<Req, Resp> {
-    private final co2MonitoringServiceImplBase serviceImpl;
+    private final Co2MonitoringServiceImplBase serviceImpl;
     private final int methodId;
 
-    MethodHandlers(co2MonitoringServiceImplBase serviceImpl, int methodId) {
+    MethodHandlers(Co2MonitoringServiceImplBase serviceImpl, int methodId) {
       this.serviceImpl = serviceImpl;
       this.methodId = methodId;
     }
@@ -301,32 +301,32 @@ public final class co2MonitoringServiceGrpc {
     }
   }
 
-  private static abstract class co2MonitoringServiceBaseDescriptorSupplier
+  private static abstract class Co2MonitoringServiceBaseDescriptorSupplier
       implements io.grpc.protobuf.ProtoFileDescriptorSupplier, io.grpc.protobuf.ProtoServiceDescriptorSupplier {
-    co2MonitoringServiceBaseDescriptorSupplier() {}
+    Co2MonitoringServiceBaseDescriptorSupplier() {}
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
-      return co2MonitoringService.co2MonitoringServiceImpl.getDescriptor();
+      return co2MonitoringService.Co2MonitoringServiceImpl.getDescriptor();
     }
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.ServiceDescriptor getServiceDescriptor() {
-      return getFileDescriptor().findServiceByName("co2MonitoringService");
+      return getFileDescriptor().findServiceByName("Co2MonitoringService");
     }
   }
 
-  private static final class co2MonitoringServiceFileDescriptorSupplier
-      extends co2MonitoringServiceBaseDescriptorSupplier {
-    co2MonitoringServiceFileDescriptorSupplier() {}
+  private static final class Co2MonitoringServiceFileDescriptorSupplier
+      extends Co2MonitoringServiceBaseDescriptorSupplier {
+    Co2MonitoringServiceFileDescriptorSupplier() {}
   }
 
-  private static final class co2MonitoringServiceMethodDescriptorSupplier
-      extends co2MonitoringServiceBaseDescriptorSupplier
+  private static final class Co2MonitoringServiceMethodDescriptorSupplier
+      extends Co2MonitoringServiceBaseDescriptorSupplier
       implements io.grpc.protobuf.ProtoMethodDescriptorSupplier {
     private final String methodName;
 
-    co2MonitoringServiceMethodDescriptorSupplier(String methodName) {
+    Co2MonitoringServiceMethodDescriptorSupplier(String methodName) {
       this.methodName = methodName;
     }
 
@@ -341,11 +341,11 @@ public final class co2MonitoringServiceGrpc {
   public static io.grpc.ServiceDescriptor getServiceDescriptor() {
     io.grpc.ServiceDescriptor result = serviceDescriptor;
     if (result == null) {
-      synchronized (co2MonitoringServiceGrpc.class) {
+      synchronized (Co2MonitoringServiceGrpc.class) {
         result = serviceDescriptor;
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
-              .setSchemaDescriptor(new co2MonitoringServiceFileDescriptorSupplier())
+              .setSchemaDescriptor(new Co2MonitoringServiceFileDescriptorSupplier())
               .addMethod(getMonitoringDeviceOnOffMethod())
               .addMethod(getCo2EmissionMethod())
               .build();

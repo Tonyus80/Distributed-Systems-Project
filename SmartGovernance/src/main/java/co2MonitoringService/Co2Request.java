@@ -79,13 +79,13 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return co2MonitoringService.co2MonitoringServiceImpl.internal_static_co2MonitoringService_Co2Request_descriptor;
+    return co2MonitoringService.Co2MonitoringServiceImpl.internal_static_co2MonitoringService_Co2Request_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return co2MonitoringService.co2MonitoringServiceImpl.internal_static_co2MonitoringService_Co2Request_fieldAccessorTable
+    return co2MonitoringService.Co2MonitoringServiceImpl.internal_static_co2MonitoringService_Co2Request_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             co2MonitoringService.Co2Request.class, co2MonitoringService.Co2Request.Builder.class);
   }
@@ -294,13 +294,13 @@ private static final long serialVersionUID = 0L;
       co2MonitoringService.Co2RequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return co2MonitoringService.co2MonitoringServiceImpl.internal_static_co2MonitoringService_Co2Request_descriptor;
+      return co2MonitoringService.Co2MonitoringServiceImpl.internal_static_co2MonitoringService_Co2Request_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return co2MonitoringService.co2MonitoringServiceImpl.internal_static_co2MonitoringService_Co2Request_fieldAccessorTable
+      return co2MonitoringService.Co2MonitoringServiceImpl.internal_static_co2MonitoringService_Co2Request_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               co2MonitoringService.Co2Request.class, co2MonitoringService.Co2Request.Builder.class);
     }
@@ -333,7 +333,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return co2MonitoringService.co2MonitoringServiceImpl.internal_static_co2MonitoringService_Co2Request_descriptor;
+      return co2MonitoringService.Co2MonitoringServiceImpl.internal_static_co2MonitoringService_Co2Request_descriptor;
     }
 
     @java.lang.Override

@@ -3,8 +3,8 @@
 
 package co2MonitoringService;
 
-public final class co2MonitoringServiceImpl {
-  private co2MonitoringServiceImpl() {}
+public final class Co2MonitoringServiceImpl {
+  private Co2MonitoringServiceImpl() {}
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistryLite registry) {
   }
@@ -47,13 +47,13 @@ public final class co2MonitoringServiceImpl {
       "ice\"\035\n\rDeviceRequest\022\014\n\004text\030\001 \001(\t\"\037\n\016De" +
       "viceResponse\022\r\n\005value\030\001 \001(\t\",\n\nCo2Reques" +
       "t\022\016\n\006carbon\030\001 \001(\002\022\016\n\006oxygen\030\002 \001(\002\"\035\n\013Co2" +
-      "Response\022\016\n\006result\030\001 \001(\t2\326\001\n\024co2Monitori" +
+      "Response\022\016\n\006result\030\001 \001(\t2\326\001\n\024Co2Monitori" +
       "ngService\022d\n\025monitoringDeviceOnOff\022#.co2" +
       "MonitoringService.DeviceRequest\032$.co2Mon" +
       "itoringService.DeviceResponse\"\000\022X\n\013co2Em" +
       "ission\022 .co2MonitoringService.Co2Request" +
       "\032!.co2MonitoringService.Co2Response\"\000(\0010" +
-      "\001B2\n\024co2MonitoringServiceB\030co2Monitoring" +
+      "\001B2\n\024co2MonitoringServiceB\030Co2Monitoring" +
       "ServiceImplP\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
