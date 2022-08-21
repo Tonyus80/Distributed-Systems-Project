@@ -1,0 +1,36 @@
+ syntax = "proto3";
+
+ option java_multiple_files = true;
+ option java_package = "co2MonitoringService";
+ option java_outer_classname = "co2MonitoringServiceImpl";
+
+  //package patientMonitoringService
+ package co2MonitoringService;
+
+ service co2MonitoringService {
+
+ 	//Unary Call
+ 	rpc monitoringDeviceOnOff(DeviceRequest) returns (DeviceResponse){}
+
+ 	//Bi-Directional
+ 	rpc co2Emission(stream Co2Request) returns (stream Co2Response){}
+ }
+
+ //Unary Call
+ message DeviceRequest{
+  	string text = 1;
+ }
+
+ message DeviceResponse{
+ 	string value = 1;
+ }
+
+ //Bi-Directional
+ message Co2Request{
+ 	float carbon = 1;
+ 	float oxygen  = 2;
+ }
+
+ message Co2Response{
+ 	string result = 1;
+ }
