@@ -18,7 +18,7 @@ public class Co2MonitoringClient {
 				.usePlaintext()
 				.build();
 
-		//stubs -- generate from proto
+		//stubs from proto
 		blockingStub = Co2MonitoringServiceGrpc.newBlockingStub(channel);
 		asyncStub = Co2MonitoringServiceGrpc.newStub(channel);
 
@@ -27,31 +27,6 @@ public class Co2MonitoringClient {
 		co2Emission();
 
 	}
-
-	private static void co2Emission() {
-
-		StreamObserver<Co2Response> responseObserver = new StreamObserver<Co2Response>(){
-
-			@Override
-			public void onNext(Co2Response value) {
-				System.out.println("Server response: The result of CO2 Emission is: " + value.getResult());
-			}
-
-			@Override
-			public void onError(Throwable t) {
-				t.printStackTrace();
-			}
-
-			@Override
-			public void onCompleted() {
-				System.out.println("CO2 Emission check completed.");
-				System.out.println("-------------------------------\n");
-			}
-		};
-
-
-	}
-
 	private static void monitoringDeviceOnOff() {
 		String status = "On";
 
@@ -68,13 +43,13 @@ public class Co2MonitoringClient {
 
 	//Bi-Directional
 	//Co2Emission monitoring
-	public static void Co2Emission() {
+	public static void co2Emission() {
 
 		StreamObserver<Co2Response> responseObserver = new StreamObserver<Co2Response>(){
 
 			@Override
 			public void onNext(Co2Response value) {
-				System.out.println("Server responded; The result of blood checking is: " + value.getResult());
+				System.out.println("Server responded: The result of Co2 Emission is: " + value.getResult());
 			}
 
 			@Override
@@ -84,7 +59,7 @@ public class Co2MonitoringClient {
 
 			@Override
 			public void onCompleted() {
-				System.out.println("Blood Pressure check completed.");
+				System.out.println("Co2 Emission check completed.");
 				System.out.println("-------------------------------\n");
 			}
 		};

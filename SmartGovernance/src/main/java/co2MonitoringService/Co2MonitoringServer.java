@@ -4,6 +4,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.InetAddress;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Properties;
 
 import javax.jmdns.JmDNS;
@@ -14,7 +16,8 @@ import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
 import co2MonitoringService.Co2MonitoringServiceGrpc.Co2MonitoringServiceImplBase;
-public class Co2MonitoringServer extends Co2MonitoringServiceGrpc.Co2MonitoringServiceImplBase {
+//public class Co2MonitoringServer extends Co2MonitoringServiceGrpc.Co2MonitoringServiceImplBase {
+public class Co2MonitoringServer extends Co2MonitoringServiceImplBase {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -57,8 +60,8 @@ public class Co2MonitoringServer extends Co2MonitoringServiceGrpc.Co2MonitoringS
 			 * Setting service information - prepare parameters for creating the ServiceInfo
 			 */
 
-			//Assume that there is registering an http server
-			String monitoring_service_type = prop.getProperty("monitoring_service_type"); //"_medical._tcp.local.";
+			//registering  http server
+			String monitoring_service_type = prop.getProperty("monitoring_service_type");
 			String monitoring_service_name = prop.getProperty("monitoring_service_name"); //"co2monitoring_service";
 			int monitoring_service_port = Integer.parseInt( prop.getProperty("monitoring_service_port")); //#50053;
 			String monitoring_service_description_properties = prop.getProperty("monitoring_service_description");
@@ -111,7 +114,7 @@ public class Co2MonitoringServer extends Co2MonitoringServiceGrpc.Co2MonitoringS
 		Properties prop = null;
 
 		//Define the input properties path
-		try (InputStream input = new FileInputStream("src/main/resources/co2Monitoring.properties")){
+		try (InputStream input = Files.newInputStream(Paths.get("src/main/resources/co2Monitoring.properties"))){
 
 			prop = new Properties();
 
@@ -140,8 +143,8 @@ public class Co2MonitoringServer extends Co2MonitoringServiceGrpc.Co2MonitoringS
 			public void onNext(Co2Request value) {
 
 				System.out.println("Receiving Co2 Emission request for: ");
-				System.out.println("Carbon Blood Pressure value: " + value.getCarbon() + "/mmHg");
-				System.out.println("Oxygen Blood Pressure value " + value.getOxygen() + "/mmHg");
+				System.out.println("Carbon Emission value: " + value.getCarbon() + "/mmHg");
+				System.out.println("Oxygen Emission value " + value.getOxygen() + "/mmHg");
 
 				String result = "";
 
