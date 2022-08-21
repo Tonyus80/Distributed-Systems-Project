@@ -51,6 +51,32 @@ public class Co2MonitoringServer extends Co2MonitoringServiceImplBase {
 
 	}
 
+
+	private Properties getProperties() {
+		Properties prop = null;
+
+		//Define the input properties path
+		try (InputStream input = Files.newInputStream(Paths.get("src/main/resources/co2Monitoring.properties"))){
+
+			prop = new Properties();
+
+			//load a properties file
+			prop.load(input);
+
+			//get the properties value and print it out
+			System.out.println(" Co2 Monitoring Service properties ...");
+			System.out.println("\t service_type: " +prop.getProperty("monitoring_service_type"));
+			System.out.println("\t service_name: " + prop.getProperty("monitoring_service_name"));
+			System.out.println("\t service_description: " + prop.getProperty("monitoring_service_description"));
+			System.out.println("\t service_port: " + prop.getProperty("monitoring_service_port"));
+
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		}
+
+		return prop;
+	}
+
 	private void registerService(Properties prop) {
 		try {
 			//Create a JmDNS instance
@@ -110,34 +136,8 @@ public class Co2MonitoringServer extends Co2MonitoringServiceImplBase {
 		System.out.println("----------------------------------------------------\n");
 	}
 
-	private Properties getProperties() {
-		Properties prop = null;
-
-		//Define the input properties path
-		try (InputStream input = Files.newInputStream(Paths.get("src/main/resources/co2Monitoring.properties"))){
-
-			prop = new Properties();
-
-			//load a properties file
-			prop.load(input);
-
-			//get the properties value and print it out
-			System.out.println(" Co2 Monitoring Service properties ...");
-			System.out.println("\t service_type: " +prop.getProperty("monitoring_service_type"));
-			System.out.println("\t service_name: " + prop.getProperty("monitoring_service_name"));
-			System.out.println("\t service_description: " + prop.getProperty("monitoring_service_description"));
-			System.out.println("\t service_port: " + prop.getProperty("monitoring_service_port"));
-
-		} catch (IOException ex) {
-			ex.printStackTrace();
-		}
-
-		return prop;
-	}
-
 	public StreamObserver<Co2Request> co2Emission(StreamObserver<Co2Response> responseObserver){
 		return new StreamObserver<Co2Request>() {
-
 
 			@Override
 			public void onNext(Co2Request value) {
@@ -147,7 +147,6 @@ public class Co2MonitoringServer extends Co2MonitoringServiceImplBase {
 				System.out.println("Oxygen Emission value " + value.getOxygen() + "/mmHg");
 
 				String result = "";
-
 
 
 			}
