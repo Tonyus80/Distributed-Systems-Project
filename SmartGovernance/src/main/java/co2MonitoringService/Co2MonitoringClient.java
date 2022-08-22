@@ -3,6 +3,7 @@ package co2MonitoringService;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.stub.StreamObserver;
+
 import co2MonitoringService.Co2MonitoringServiceGrpc.Co2MonitoringServiceBlockingStub;
 import co2MonitoringService.Co2MonitoringServiceGrpc.Co2MonitoringServiceStub;
 public class Co2MonitoringClient {
@@ -14,7 +15,7 @@ public class Co2MonitoringClient {
 		// TODO Auto-generated method stub
 
 		ManagedChannel channel = ManagedChannelBuilder.
-				forAddress("localhost", 50053)
+				forAddress("localhost", 50063)
 				.usePlaintext()
 				.build();
 
@@ -24,20 +25,49 @@ public class Co2MonitoringClient {
 
 
 		monitoringDeviceOnOff();
+		powerSwitch();
 		co2Emission();
 
 	}
+	
+	// preparing the message request
+			private static void powerSwitch() {
+			// TODO Auto-generated method stub
+				System.out.println("-------------- Unary --------------");
+
+				
+				boolean input=false;
+				System.out.println("Want to turned ON Auto-renewal? "+input);
+				
+				
+				PowerRequest request= PowerRequest.newBuilder().setPower(input).build();
+				
+				// sending the message request & also receiving response 
+				PowerResponse response=	blockingStub.powerSwitch(request);
+				
+				//priniting response from server
+				
+				if(response.getPower()==true) {
+					System.out.println("Server response: Auto-renewal turned ON ");
+				}
+				else {
+					System.out.println("Server response: Auto-renewal turned OFF ");
+				}
+		}
+			
+	
+	
 	private static void monitoringDeviceOnOff() {
-		String status = "On";
+		String devStatus = "On";
 
 		//sent the request
-		DeviceRequest request = DeviceRequest.newBuilder().setText(status).build();
+		DeviceRequest request = DeviceRequest.newBuilder().setText(devStatus).build();
 
 		//check the response
 		DeviceResponse response = blockingStub.monitoringDeviceOnOff(request);
 
 		System.out.println("Server responded; The Monitoring Device has been turned: " + response.getValue());
-		System.out.println("Changing the status of the monitoring device has been completed.");
+		System.out.println("The status of the monitoring device has been completed.");
 		System.out.println("----------------------------------------------------------------\n");
 	}
 

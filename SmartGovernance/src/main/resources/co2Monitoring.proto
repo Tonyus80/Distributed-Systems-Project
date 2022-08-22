@@ -10,10 +10,22 @@
  service Co2MonitoringService {
 
  	//Unary Call
+ 	rpc powerSwitch(PowerRequest) returns (PowerResponse){}
+
  	rpc monitoringDeviceOnOff(DeviceRequest) returns (DeviceResponse){}
 
  	//Bi-Directional
  	rpc co2Emission(stream Co2Request) returns (stream Co2Response){}
+ }
+
+ //Unary Call
+ message PowerRequest{
+ 	bool power=1;
+
+ }
+
+ message PowerResponse{
+ 	bool power=1;
  }
 
  //Unary Call

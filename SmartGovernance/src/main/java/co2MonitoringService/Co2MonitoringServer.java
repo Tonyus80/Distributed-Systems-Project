@@ -15,6 +15,7 @@ import javax.swing.JOptionPane;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
+
 import co2MonitoringService.Co2MonitoringServiceGrpc.Co2MonitoringServiceImplBase;
 //public class Co2MonitoringServer extends Co2MonitoringServiceGrpc.Co2MonitoringServiceImplBase {
 public class Co2MonitoringServer extends Co2MonitoringServiceImplBase {
@@ -28,7 +29,7 @@ public class Co2MonitoringServer extends Co2MonitoringServiceImplBase {
 		
 		co2MonitorServer.registerService(prop);
 		
-		int port = Integer.valueOf( prop.getProperty("monitoring_service_port")); //#50053
+		int port = Integer.parseInt( prop.getProperty("monitoring_service_port")); //#50063
 		
 		try {
 			Server server = ServerBuilder.forPort(port)
@@ -119,6 +120,32 @@ public class Co2MonitoringServer extends Co2MonitoringServiceImplBase {
 			e.printStackTrace();
 		}
 	}
+	
+	
+	//unary rpc 
+	@Override
+    public void powerSwitch(PowerRequest request,
+            StreamObserver<PowerResponse> responseObserver) {
+		System.out.println("-------------- Unary --------------");
+
+		Boolean check= request.getPower();
+		
+		if (check==true) {
+			System.out.println("Switch is turning ON ");
+		}
+		else {
+			System.out.println("Switch is turning OFF ");
+
+		}
+		// Send a response with value back
+		PowerResponse responce=PowerResponse.newBuilder().setPower(check).build();
+		responseObserver.onNext(responce);
+		
+		// server protofiles has completed the processing
+		responseObserver.onCompleted();
+		
+    }
+	
 
 	//Unary call
 	//TURN ON/OFF Monitoring Device
@@ -143,8 +170,8 @@ public class Co2MonitoringServer extends Co2MonitoringServiceImplBase {
 			public void onNext(Co2Request value) {
 
 				System.out.println("Receiving Co2 Emission request for: ");
-				System.out.println("Carbon Emission value: " + value.getCarbon() + "/mmHg");
-				System.out.println("Oxygen Emission value " + value.getOxygen() + "/mmHg");
+				System.out.println("Carbon Emission value: " + value.getCarbon() + "/mmGm");
+				System.out.println("Oxygen Emission value " + value.getOxygen() + "/mmGg");
 
 				String result = "";
 
