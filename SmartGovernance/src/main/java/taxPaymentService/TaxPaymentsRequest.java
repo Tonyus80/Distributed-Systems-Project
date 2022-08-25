@@ -88,7 +88,7 @@ private static final long serialVersionUID = 0L;
   public static final int TAXPAYMENTS_FIELD_NUMBER = 1;
   private volatile java.lang.Object taxPayments_;
   /**
-   * <code>string TaxPayments = 1;</code>
+   * <code>string taxPayments = 1;</code>
    */
   public java.lang.String getTaxPayments() {
     java.lang.Object ref = taxPayments_;
@@ -103,7 +103,7 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
-   * <code>string TaxPayments = 1;</code>
+   * <code>string taxPayments = 1;</code>
    */
   public com.google.protobuf.ByteString
       getTaxPaymentsBytes() {
@@ -428,7 +428,7 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object taxPayments_ = "";
     /**
-     * <code>string TaxPayments = 1;</code>
+     * <code>string taxPayments = 1;</code>
      */
     public java.lang.String getTaxPayments() {
       java.lang.Object ref = taxPayments_;
@@ -443,7 +443,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string TaxPayments = 1;</code>
+     * <code>string taxPayments = 1;</code>
      */
     public com.google.protobuf.ByteString
         getTaxPaymentsBytes() {
@@ -459,7 +459,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string TaxPayments = 1;</code>
+     * <code>string taxPayments = 1;</code>
      */
     public Builder setTaxPayments(
         java.lang.String value) {
@@ -472,7 +472,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string TaxPayments = 1;</code>
+     * <code>string taxPayments = 1;</code>
      */
     public Builder clearTaxPayments() {
       
@@ -481,7 +481,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string TaxPayments = 1;</code>
+     * <code>string taxPayments = 1;</code>
      */
     public Builder setTaxPaymentsBytes(
         com.google.protobuf.ByteString value) {

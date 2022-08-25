@@ -18,7 +18,7 @@ public class CustomerAdminClient {
 	public static void main(String[] args) {
 	
 		ManagedChannel adminChannel = ManagedChannelBuilder.
-							forAddress("localhost", 50052)
+							forAddress("localhost", 50072)
 							.usePlaintext()
 							.build();
 		
@@ -57,8 +57,8 @@ public class CustomerAdminClient {
 		StreamObserver<RegisterRequest> requestObserver = adminAsyncStub.registerCustomers(responseObserver);
 		requestObserver.onNext(RegisterRequest.newBuilder()
 											.setName("Giulio Conte")
-											.setAge("55")
-											.setGender("Male")
+											.setTaxNo("5805")
+											.setPaymentType("Annual")
 											.build());	
 				
 		//Mark the end of requests
@@ -85,7 +85,7 @@ public class CustomerAdminClient {
 			// while the server is still responding/ sending data back, keep printing data
 			Iterator<DisplayResponse> responses = adminBlockingStub.displayCustomers(request);
 			
-			System.out.println("Server responded;displaying Customer list,\n");
+			System.out.println("Server responded: displaying Customer list,\n");
 			
 			while (responses.hasNext()) {
 				DisplayResponse customerList = responses.next();				

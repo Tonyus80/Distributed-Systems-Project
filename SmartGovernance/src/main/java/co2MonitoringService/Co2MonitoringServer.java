@@ -170,10 +170,27 @@ public class Co2MonitoringServer extends Co2MonitoringServiceImplBase {
 			public void onNext(Co2Request value) {
 
 				System.out.println("Receiving Co2 Emission request for: ");
-				System.out.println("Carbon Emission value: " + value.getCarbon() + "/mmGm");
-				System.out.println("Oxygen Emission value " + value.getOxygen() + "/mmGg");
+				System.out.println("Carbon Emission value: " + value.getCarbon() + "/g/km");
+				System.out.println("Oxygen Emission value " + value.getOxygen() + "/g/km");
 
 				String result = "";
+
+				if (value.getCarbon() == 0){
+					result = ("The Band is: A0, and the cost is €120 annual, 33 Quarterly");
+				}
+
+				//The Diastolic figures too low
+				else if ((value.getCarbon() > 0) && (value.getCarbon() <= 80 )){
+					result = ("The Band is: A1, and the cost is €170 annual, 48 Quarterly");
+				}
+
+				//Wrong figures of Blood Pressure has been entered
+				else {
+					JOptionPane.showMessageDialog(null, "Wrong number entered");
+				}
+
+				Co2Response reply = Co2Response.newBuilder().setResult(result).build();
+				responseObserver.onNext(reply);
 
 
 			}

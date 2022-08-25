@@ -21,8 +21,8 @@ private static final long serialVersionUID = 0L;
   }
   private RegisterRequest() {
     name_ = "";
-    age_ = "";
-    gender_ = "";
+    taxNo_ = "";
+    paymentType_ = "";
   }
 
   @java.lang.Override
@@ -58,13 +58,13 @@ private static final long serialVersionUID = 0L;
           case 18: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            age_ = s;
+            taxNo_ = s;
             break;
           }
           case 26: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            gender_ = s;
+            paymentType_ = s;
             break;
           }
           default: {
@@ -133,68 +133,68 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int AGE_FIELD_NUMBER = 2;
-  private volatile java.lang.Object age_;
+  public static final int TAXNO_FIELD_NUMBER = 2;
+  private volatile java.lang.Object taxNo_;
   /**
-   * <code>string age = 2;</code>
+   * <code>string taxNo = 2;</code>
    */
-  public java.lang.String getAge() {
-    java.lang.Object ref = age_;
+  public java.lang.String getTaxNo() {
+    java.lang.Object ref = taxNo_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      age_ = s;
+      taxNo_ = s;
       return s;
     }
   }
   /**
-   * <code>string age = 2;</code>
+   * <code>string taxNo = 2;</code>
    */
   public com.google.protobuf.ByteString
-      getAgeBytes() {
-    java.lang.Object ref = age_;
+      getTaxNoBytes() {
+    java.lang.Object ref = taxNo_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      age_ = b;
+      taxNo_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
     }
   }
 
-  public static final int GENDER_FIELD_NUMBER = 3;
-  private volatile java.lang.Object gender_;
+  public static final int PAYMENTTYPE_FIELD_NUMBER = 3;
+  private volatile java.lang.Object paymentType_;
   /**
-   * <code>string gender = 3;</code>
+   * <code>string paymentType = 3;</code>
    */
-  public java.lang.String getGender() {
-    java.lang.Object ref = gender_;
+  public java.lang.String getPaymentType() {
+    java.lang.Object ref = paymentType_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      gender_ = s;
+      paymentType_ = s;
       return s;
     }
   }
   /**
-   * <code>string gender = 3;</code>
+   * <code>string paymentType = 3;</code>
    */
   public com.google.protobuf.ByteString
-      getGenderBytes() {
-    java.lang.Object ref = gender_;
+      getPaymentTypeBytes() {
+    java.lang.Object ref = paymentType_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      gender_ = b;
+      paymentType_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -218,11 +218,11 @@ private static final long serialVersionUID = 0L;
     if (!getNameBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, name_);
     }
-    if (!getAgeBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, age_);
+    if (!getTaxNoBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, taxNo_);
     }
-    if (!getGenderBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, gender_);
+    if (!getPaymentTypeBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, paymentType_);
     }
     unknownFields.writeTo(output);
   }
@@ -236,11 +236,11 @@ private static final long serialVersionUID = 0L;
     if (!getNameBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, name_);
     }
-    if (!getAgeBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, age_);
+    if (!getTaxNoBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, taxNo_);
     }
-    if (!getGenderBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, gender_);
+    if (!getPaymentTypeBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, paymentType_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -260,10 +260,10 @@ private static final long serialVersionUID = 0L;
     boolean result = true;
     result = result && getName()
         .equals(other.getName());
-    result = result && getAge()
-        .equals(other.getAge());
-    result = result && getGender()
-        .equals(other.getGender());
+    result = result && getTaxNo()
+        .equals(other.getTaxNo());
+    result = result && getPaymentType()
+        .equals(other.getPaymentType());
     result = result && unknownFields.equals(other.unknownFields);
     return result;
   }
@@ -277,10 +277,10 @@ private static final long serialVersionUID = 0L;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + NAME_FIELD_NUMBER;
     hash = (53 * hash) + getName().hashCode();
-    hash = (37 * hash) + AGE_FIELD_NUMBER;
-    hash = (53 * hash) + getAge().hashCode();
-    hash = (37 * hash) + GENDER_FIELD_NUMBER;
-    hash = (53 * hash) + getGender().hashCode();
+    hash = (37 * hash) + TAXNO_FIELD_NUMBER;
+    hash = (53 * hash) + getTaxNo().hashCode();
+    hash = (37 * hash) + PAYMENTTYPE_FIELD_NUMBER;
+    hash = (53 * hash) + getPaymentType().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -420,9 +420,9 @@ private static final long serialVersionUID = 0L;
       super.clear();
       name_ = "";
 
-      age_ = "";
+      taxNo_ = "";
 
-      gender_ = "";
+      paymentType_ = "";
 
       return this;
     }
@@ -451,8 +451,8 @@ private static final long serialVersionUID = 0L;
     public customerAdminService.RegisterRequest buildPartial() {
       customerAdminService.RegisterRequest result = new customerAdminService.RegisterRequest(this);
       result.name_ = name_;
-      result.age_ = age_;
-      result.gender_ = gender_;
+      result.taxNo_ = taxNo_;
+      result.paymentType_ = paymentType_;
       onBuilt();
       return result;
     }
@@ -505,12 +505,12 @@ private static final long serialVersionUID = 0L;
         name_ = other.name_;
         onChanged();
       }
-      if (!other.getAge().isEmpty()) {
-        age_ = other.age_;
+      if (!other.getTaxNo().isEmpty()) {
+        taxNo_ = other.taxNo_;
         onChanged();
       }
-      if (!other.getGender().isEmpty()) {
-        gender_ = other.gender_;
+      if (!other.getPaymentType().isEmpty()) {
+        paymentType_ = other.paymentType_;
         onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
@@ -611,140 +611,140 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object age_ = "";
+    private java.lang.Object taxNo_ = "";
     /**
-     * <code>string age = 2;</code>
+     * <code>string taxNo = 2;</code>
      */
-    public java.lang.String getAge() {
-      java.lang.Object ref = age_;
+    public java.lang.String getTaxNo() {
+      java.lang.Object ref = taxNo_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        age_ = s;
+        taxNo_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string age = 2;</code>
+     * <code>string taxNo = 2;</code>
      */
     public com.google.protobuf.ByteString
-        getAgeBytes() {
-      java.lang.Object ref = age_;
+        getTaxNoBytes() {
+      java.lang.Object ref = taxNo_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        age_ = b;
+        taxNo_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string age = 2;</code>
+     * <code>string taxNo = 2;</code>
      */
-    public Builder setAge(
+    public Builder setTaxNo(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      age_ = value;
+      taxNo_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string age = 2;</code>
+     * <code>string taxNo = 2;</code>
      */
-    public Builder clearAge() {
+    public Builder clearTaxNo() {
       
-      age_ = getDefaultInstance().getAge();
+      taxNo_ = getDefaultInstance().getTaxNo();
       onChanged();
       return this;
     }
     /**
-     * <code>string age = 2;</code>
+     * <code>string taxNo = 2;</code>
      */
-    public Builder setAgeBytes(
+    public Builder setTaxNoBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      age_ = value;
+      taxNo_ = value;
       onChanged();
       return this;
     }
 
-    private java.lang.Object gender_ = "";
+    private java.lang.Object paymentType_ = "";
     /**
-     * <code>string gender = 3;</code>
+     * <code>string paymentType = 3;</code>
      */
-    public java.lang.String getGender() {
-      java.lang.Object ref = gender_;
+    public java.lang.String getPaymentType() {
+      java.lang.Object ref = paymentType_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        gender_ = s;
+        paymentType_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string gender = 3;</code>
+     * <code>string paymentType = 3;</code>
      */
     public com.google.protobuf.ByteString
-        getGenderBytes() {
-      java.lang.Object ref = gender_;
+        getPaymentTypeBytes() {
+      java.lang.Object ref = paymentType_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        gender_ = b;
+        paymentType_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string gender = 3;</code>
+     * <code>string paymentType = 3;</code>
      */
-    public Builder setGender(
+    public Builder setPaymentType(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      gender_ = value;
+      paymentType_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string gender = 3;</code>
+     * <code>string paymentType = 3;</code>
      */
-    public Builder clearGender() {
+    public Builder clearPaymentType() {
       
-      gender_ = getDefaultInstance().getGender();
+      paymentType_ = getDefaultInstance().getPaymentType();
       onChanged();
       return this;
     }
     /**
-     * <code>string gender = 3;</code>
+     * <code>string paymentType = 3;</code>
      */
-    public Builder setGenderBytes(
+    public Builder setPaymentTypeBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      gender_ = value;
+      paymentType_ = value;
       onChanged();
       return this;
     }

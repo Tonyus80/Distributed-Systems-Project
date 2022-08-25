@@ -18,22 +18,22 @@ public interface RegisterRequestOrBuilder extends
       getNameBytes();
 
   /**
-   * <code>string age = 2;</code>
+   * <code>string taxNo = 2;</code>
    */
-  java.lang.String getAge();
+  java.lang.String getTaxNo();
   /**
-   * <code>string age = 2;</code>
+   * <code>string taxNo = 2;</code>
    */
   com.google.protobuf.ByteString
-      getAgeBytes();
+      getTaxNoBytes();
 
   /**
-   * <code>string gender = 3;</code>
+   * <code>string paymentType = 3;</code>
    */
-  java.lang.String getGender();
+  java.lang.String getPaymentType();
   /**
-   * <code>string gender = 3;</code>
+   * <code>string paymentType = 3;</code>
    */
   com.google.protobuf.ByteString
-      getGenderBytes();
+      getPaymentTypeBytes();
 }

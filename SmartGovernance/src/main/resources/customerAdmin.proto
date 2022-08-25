@@ -23,8 +23,8 @@
  message RegisterRequest{
 
  	string name = 1;
- 	string age = 2;
- 	string gender = 3;
+ 	string taxNo = 2;
+ 	string paymentType = 3;
  }
 
  message RegisterResponse{

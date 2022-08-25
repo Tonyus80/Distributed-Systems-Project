@@ -54,27 +54,27 @@ public final class customerAdminServiceImpl {
   static {
     java.lang.String[] descriptorData = {
       "\n\023customerAdmin.proto\022\024CustomerAdminServ" +
-      "ice\"<\n\017RegisterRequest\022\014\n\004name\030\001 \001(\t\022\013\n\003" +
-      "age\030\002 \001(\t\022\016\n\006gender\030\003 \001(\t\"\"\n\020RegisterRes" +
-      "ponse\022\016\n\006result\030\001 \001(\t\"&\n\016DisplayRequest\022" +
-      "\024\n\014customerList\030\001 \001(\t\"\'\n\017DisplayResponse" +
-      "\022\024\n\014allCustomers\030\001 \001(\t\"\275\001\n\020CalculateRequ" +
-      "est\022\024\n\014customerName\030\001 \001(\t\022\025\n\rnumberVehic" +
-      "le\030\002 \001(\005\022G\n\013vehicleType\030\003 \001(\01622.Customer" +
-      "AdminService.CalculateRequest.VehicleTyp" +
-      "e\"3\n\013VehicleType\022\n\n\006DIESEL\020\000\022\014\n\010ELECTRIC" +
-      "\020\001\022\n\n\006PETROL\020\002\"$\n\021CalculateResponse\022\017\n\007m" +
-      "essage\030\002 \001(\t2\310\002\n\024CustomerAdminService\022f\n" +
-      "\021registerCustomers\022%.CustomerAdminServic" +
-      "e.RegisterRequest\032&.CustomerAdminService" +
-      ".RegisterResponse\"\000(\001\022c\n\020displayCustomer" +
-      "s\022$.CustomerAdminService.DisplayRequest\032" +
-      "%.CustomerAdminService.DisplayResponse\"\000" +
-      "0\001\022c\n\016calculatePrice\022&.CustomerAdminServ" +
-      "ice.CalculateRequest\032\'.CustomerAdminServ" +
-      "ice.CalculateResponse\"\000B2\n\024customerAdmin" +
-      "ServiceB\030customerAdminServiceImplP\001b\006pro" +
-      "to3"
+      "ice\"C\n\017RegisterRequest\022\014\n\004name\030\001 \001(\t\022\r\n\005" +
+      "taxNo\030\002 \001(\t\022\023\n\013paymentType\030\003 \001(\t\"\"\n\020Regi" +
+      "sterResponse\022\016\n\006result\030\001 \001(\t\"&\n\016DisplayR" +
+      "equest\022\024\n\014customerList\030\001 \001(\t\"\'\n\017DisplayR" +
+      "esponse\022\024\n\014allCustomers\030\001 \001(\t\"\275\001\n\020Calcul" +
+      "ateRequest\022\024\n\014customerName\030\001 \001(\t\022\025\n\rnumb" +
+      "erVehicle\030\002 \001(\005\022G\n\013vehicleType\030\003 \001(\01622.C" +
+      "ustomerAdminService.CalculateRequest.Veh" +
+      "icleType\"3\n\013VehicleType\022\n\n\006DIESEL\020\000\022\014\n\010E" +
+      "LECTRIC\020\001\022\n\n\006PETROL\020\002\"$\n\021CalculateRespon" +
+      "se\022\017\n\007message\030\002 \001(\t2\310\002\n\024CustomerAdminSer" +
+      "vice\022f\n\021registerCustomers\022%.CustomerAdmi" +
+      "nService.RegisterRequest\032&.CustomerAdmin" +
+      "Service.RegisterResponse\"\000(\001\022c\n\020displayC" +
+      "ustomers\022$.CustomerAdminService.DisplayR" +
+      "equest\032%.CustomerAdminService.DisplayRes" +
+      "ponse\"\0000\001\022c\n\016calculatePrice\022&.CustomerAd" +
+      "minService.CalculateRequest\032\'.CustomerAd" +
+      "minService.CalculateResponse\"\000B2\n\024custom" +
+      "erAdminServiceB\030customerAdminServiceImpl" +
+      "P\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -93,7 +93,7 @@ public final class customerAdminServiceImpl {
     internal_static_CustomerAdminService_RegisterRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_CustomerAdminService_RegisterRequest_descriptor,
-        new java.lang.String[] { "Name", "Age", "Gender", });
+        new java.lang.String[] { "Name", "TaxNo", "PaymentType", });
     internal_static_CustomerAdminService_RegisterResponse_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_CustomerAdminService_RegisterResponse_fieldAccessorTable = new

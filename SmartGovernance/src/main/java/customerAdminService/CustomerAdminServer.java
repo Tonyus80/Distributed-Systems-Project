@@ -31,7 +31,7 @@ CustomerAdminServer custAdminService = new CustomerAdminServer();
 		
 		custAdminService.registeringCustomerByAdminService(adminProp);
 		
-		int adminPort = Integer.parseInt( adminProp.getProperty("administration_service_port")); //#50052
+		int adminPort = Integer.parseInt( adminProp.getProperty("administration_service_port")); //
 		
 		try {
 			Server adminServer = ServerBuilder.forPort(adminPort)
@@ -89,10 +89,10 @@ public void registeringCustomerByAdminService(Properties adminProp) {
 			 */
 			
 			//Assume that there is registering an http server
-			String administration_service_type = adminProp.getProperty("administration_service_type"); //"_administration._tcp.local.";
-			String administration_service_name = adminProp.getProperty("administration_service_name"); //"customer_administration_service";
-			int administration_service_port = Integer.parseInt( adminProp.getProperty("administration_service_port")); //#50052;
-			String administration_service_description_properties = adminProp.getProperty("administration_service_description"); //"path=index.html";
+			String administration_service_type = adminProp.getProperty("administration_service_type");
+			String administration_service_name = adminProp.getProperty("administration_service_name");
+			int administration_service_port = Integer.parseInt( adminProp.getProperty("administration_service_port")); //port example #50072;
+			String administration_service_description_properties = adminProp.getProperty("administration_service_description");
 			
 			//Register a service			
 			ServiceInfo adminServiceInfo = ServiceInfo.create(administration_service_type, 
@@ -106,12 +106,6 @@ public void registeringCustomerByAdminService(Properties adminProp) {
 			
 			////Wait a second
 			Thread.sleep(1000);
-			
-			//System.out.println("Ready to unregister services");
-			
-			//Unregister all services			
-			//jmdns.unregisterAllServices();
-			//jmdns.unregisterService(adminServiceInfo);
 			
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
@@ -132,13 +126,13 @@ public void registeringCustomerByAdminService(Properties adminProp) {
 			@Override
 			public void onNext(RegisterRequest value) {
 				System.out.println("Receiving Customer registration request,\nCustomer Name: " + value.getName()
-																			+ ", Age: " + value.getAge()
-																			+ ", Gender: " + value.getGender() 
+																			+ ", Tax No.: " + value.getTaxNo()
+																			+ ", Payment Type: " + value.getPaymentType()
 																			+ "\n");
 				
 				String result = ("Customer Name: " + value.getName() 
-												+ ", Age: " + value.getAge() 
-												+ ", Gender: " + value.getGender());
+												+ ", Tax No.: " + value.getTaxNo()
+												+ ", Payment Type:: " + value.getPaymentType());
 				
 				RegisterResponse reply = RegisterResponse.newBuilder().setResult(result).build();
 				responseObserver.onNext(reply);				
@@ -167,11 +161,12 @@ public void registeringCustomerByAdminService(Properties adminProp) {
 		System.out.print("Receiving Customer list display request,\n\n" + request.getCustomerList());
 
 		ArrayList<String> customerList = new ArrayList<String>();
-		customerList.add("Customer Name: Aron Edge, Age: 35, Gender: male");
-		customerList.add("Customer Name: Laura Smit, Age: 31, Gender: female");		
-		customerList.add("Customer Name: Patrick Summer, Age: 67, Gender: male");
-		customerList.add("Customer Name: Winnie Gala, Age: 22, Gender: female");
-		customerList.add("Customer Name: Gabriel Murphy, Age: 78, Gender: male");		
+		customerList.add("Customer Name: Aron Edge, Tax No.: 3545, Payment Type: annual");
+		customerList.add("Customer Name: Laura Smit, Tax No.: 3271, Payment Type:: monthly");
+		customerList.add("Customer Name: Patrick Summer, Tax No.: 6987, Payment Type: quarterly");
+		customerList.add("Customer Name: Paul Suleiman, Tax No.: 1737, Payment Type: quarterly");
+		customerList.add("Customer Name: Winnie Gala, Tax No.: 2122, Payment Type: annual");
+		customerList.add("Customer Name: Gabriel Murphy, Tax No.: 7048, Payment Type: monthly");
 
 		for (int i = 0; i <  customerList.size(); i++) {
 
@@ -227,7 +222,7 @@ public void registeringCustomerByAdminService(Properties adminProp) {
 		
 		else if (request.getVehicleType()==VehicleType.PETROL) {
 			
-			pricePerVehicle = (float) 500.00;
+			pricePerVehicle = (float) 300.00;
 			totalPrice = request.getNumberVehicle() * (float) pricePerVehicle;
 			result = message + totalPrice + "\n";
 		}

@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+// config options
+option java_multiple_files = true;
+//option java_package = "customerAdminService";
+option java_package = "taxPaymentService";
+option java_outer_classname = "AmountBalanceServiceImpl";
+option objc_class_prefix = "BBS";
+
+package paymentServices;
+
+service AmountTotalDue {
+  // unary RPC
+  rpc checkAmount(PaymentRequest) returns (PaymentResponse);
+
+  // bidirection RPC - send stream of next tax payments
+  rpc confirmTaxPayments(stream TaxPaymentsRequest) returns (stream TaxPaymentsResponse);
+}
+
+// checkPaymentBalance request message: string
+message PaymentRequest{
+  string text = 1;
+}
+// checkPaymentBalance response message string
+message PaymentResponse{
+  string value = 1;
+}
+// confirmTaxPayments request message: string
+message TaxPaymentsRequest{
+  string taxPayments = 1;
+}
+// confirmTaxPayments response message: string
+message TaxPaymentsResponse{
+  string taxPayments = 1;
+}
