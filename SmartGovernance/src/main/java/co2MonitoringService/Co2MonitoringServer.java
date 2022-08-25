@@ -24,24 +24,24 @@ public class Co2MonitoringServer extends Co2MonitoringServiceImplBase {
 		// TODO Auto-generated method stub
 
 		Co2MonitoringServer co2MonitorServer = new Co2MonitoringServer();
-		
+
 		Properties prop = co2MonitorServer.getProperties();
-		
+
 		co2MonitorServer.registerService(prop);
-		
+
 		int port = Integer.parseInt( prop.getProperty("monitoring_service_port")); //#50063
-		
+
 		try {
 			Server server = ServerBuilder.forPort(port)
-										.addService(co2MonitorServer)
-										.build()
-										.start();
-			
+					.addService(co2MonitorServer)
+					.build()
+					.start();
+
 			System.out.println(" Co2 Server started listening on port: " + port);
-			System.out.println("----------------------------------------------------------\n");	
-			
-			server.awaitTermination();			
-			
+			System.out.println("----------------------------------------------------------\n");
+
+			server.awaitTermination();
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -120,16 +120,16 @@ public class Co2MonitoringServer extends Co2MonitoringServiceImplBase {
 			e.printStackTrace();
 		}
 	}
-	
-	
+
+
 	//unary rpc 
 	@Override
-    public void powerSwitch(PowerRequest request,
-            StreamObserver<PowerResponse> responseObserver) {
+	public void powerSwitch(PowerRequest request,
+							StreamObserver<PowerResponse> responseObserver) {
 		System.out.println("-------------- Unary --------------");
 
 		Boolean check= request.getPower();
-		
+
 		if (check==true) {
 			System.out.println("Switch is turning ON ");
 		}
@@ -140,15 +140,15 @@ public class Co2MonitoringServer extends Co2MonitoringServiceImplBase {
 		// Send a response with value back
 		PowerResponse responce=PowerResponse.newBuilder().setPower(check).build();
 		responseObserver.onNext(responce);
-		
-		// server protofiles has completed the processing
+
+		// server proto files has completed the processing
 		responseObserver.onCompleted();
-		
-    }
-	
+
+	}
+
 
 	//Unary call
-	//TURN ON/OFF Monitoring Device
+	//TURN ON/OFF Auto renewal
 	@Override
 	public void monitoringDeviceOnOff(DeviceRequest request, StreamObserver<DeviceResponse> responseObserver) {
 
@@ -171,20 +171,47 @@ public class Co2MonitoringServer extends Co2MonitoringServiceImplBase {
 
 				System.out.println("Receiving Co2 Emission request for: ");
 				System.out.println("Carbon Emission value: " + value.getCarbon() + "/g/km");
-				System.out.println("Oxygen Emission value " + value.getOxygen() + "/g/km");
+
 
 				String result = "";
 
-				if (value.getCarbon() == 0){
-					result = ("The Band is: A0, and the cost is €120 annual, 33 Quarterly");
+				//Band A1
+				if (value.getCarbon() >= 0 && value.getCarbon() <= 80 ){
+					result = ("Band type is: A1, and the cost is €170 annual, 48 Quarterly");
 				}
 
-				//The Diastolic figures too low
-				else if ((value.getCarbon() > 0) && (value.getCarbon() <= 80 )){
-					result = ("The Band is: A1, and the cost is €170 annual, 48 Quarterly");
+				else if (value.getCarbon() > 80 && value.getCarbon() <= 100 ){
+					result = ("Band type is: A2, and the cost is €180 annual, €50 Quarterly");
+				}
+				else if (value.getCarbon() > 100 && value.getCarbon() <= 110 ){
+					result = ("Band type is: A3, and the cost is €190 annual, €53 Quarterly");
+				}
+				else if (value.getCarbon() > 110 && value.getCarbon() <= 120 ){
+					result = ("Band type is: A4, and the cost is €200 annual, €56 Quarterly");
+				}
+				else if (value.getCarbon() > 120 && value.getCarbon() <= 130 ){
+					result = ("Band type is: B1, and the cost is €270 annual, €76 Quarterly");
+				}
+				else if (value.getCarbon() > 130 && value.getCarbon() <= 140 ){
+					result = ("Band type is: B2, and the cost is €280 annual, €79 Quarterly");
+				}
+				else if (value.getCarbon() > 140 && value.getCarbon() <= 155 ){
+					result = ("Band type is: C, and the cost is €390 annual, €110 Quarterly");
+				}
+				else if (value.getCarbon() > 155 && value.getCarbon() <= 170 ){
+					result = ("Band type is: D, and the cost is €570 annual, €161 Quarterly");
+				}
+				else if (value.getCarbon() > 170 && value.getCarbon() <= 190 ){
+					result = ("Band type is: E, and the cost is €750 annual, €211 Quarterly");
+				}
+				else if (value.getCarbon() > 190 && value.getCarbon() <= 255 ){
+					result = ("Band type is: F, and the cost is €1200 annual, €339 Quarterly");
+				}
+				else if (value.getCarbon() > 225 ){
+					result = ("Band type is: G, and the cost is €2350 annual, €663 Quarterly");
 				}
 
-				//Wrong figures of Blood Pressure has been entered
+				//Wrong number of has been entered
 				else {
 					JOptionPane.showMessageDialog(null, "Wrong number entered");
 				}
@@ -205,8 +232,6 @@ public class Co2MonitoringServer extends Co2MonitoringServiceImplBase {
 
 				System.out.println("CO2 Emission request completed.");
 				System.out.println("------------------------------------------\n");
-
-				//completed too
 				responseObserver.onCompleted();
 			}
 
