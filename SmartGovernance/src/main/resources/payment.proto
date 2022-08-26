@@ -12,6 +12,9 @@ service AmountTotalDue {
   // unary RPC
   rpc checkAmount(PaymentRequest) returns (PaymentResponse);
 
+     //server side streaming
+  rpc Listoverduepayer(ListRequest) returns (stream ListResponse){}
+
   // bidirection RPC - send stream of next tax payments
   rpc confirmTaxPayments(stream TaxPaymentsRequest) returns (stream TaxPaymentsResponse);
 }
@@ -31,4 +34,11 @@ message TaxPaymentsRequest{
 // confirmTaxPayments response message: string
 message TaxPaymentsResponse{
   string taxPayments = 1;
+}
+
+message ListRequest{
+  string ask=1;
+}
+message ListResponse{
+  string ans=1;
 }

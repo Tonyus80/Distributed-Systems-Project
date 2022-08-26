@@ -29,6 +29,15 @@ class AmountTotalDueServicer(payment_pb2_grpc.AmountTotalDueServicer):
             yield taxPayments
 
 
+
+    def Listoverduepayer(self, request, context):
+        print("Server received staff request: " + request.ask)
+
+        staff = ["Sam", "Lisa", "Jay", "John", "Shiobhan", "Jim", "Sandra", "Mark"]
+        for x in staff:
+            #print(x)
+            yield security_pb2.ListResponse(ans=x)
+            time.sleep(2)
 # REGISTERING SERVICE WITH ZEROCONFIG
 
 def register_service():
@@ -53,7 +62,7 @@ def register_service():
     browser = ServiceBrowser(zeroconf_browser, type_, [on_service_state_change])
 
     zeroconf_registrar = Zeroconf()
-    desc = 'Retrieves the users account balance, and allows them to check when their next few tax payments are due'
+    desc = 'check payments are due'
     info = ServiceInfo(
         # specifying service info: type, name, localhost, port
         type_, registration_name,
@@ -70,6 +79,9 @@ def register_service():
         zeroconf_registrar.close()
         browser.cancel()
         zeroconf_browser.close()
+
+
+
 
 
 # starting server on specified port
@@ -89,6 +101,8 @@ def serve():
             time.sleep(86400)
     except KeyboardInterrupt:
         server.stop(0)
+        
+
 
 
 if __name__ == '__main__':
