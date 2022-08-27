@@ -59,38 +59,6 @@ public final class Co2MonitoringServiceGrpc {
      return getPowerSwitchMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<co2MonitoringService.DeviceRequest,
-      co2MonitoringService.DeviceResponse> getMonitoringDeviceOnOffMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "monitoringDeviceOnOff",
-      requestType = co2MonitoringService.DeviceRequest.class,
-      responseType = co2MonitoringService.DeviceResponse.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<co2MonitoringService.DeviceRequest,
-      co2MonitoringService.DeviceResponse> getMonitoringDeviceOnOffMethod() {
-    io.grpc.MethodDescriptor<co2MonitoringService.DeviceRequest, co2MonitoringService.DeviceResponse> getMonitoringDeviceOnOffMethod;
-    if ((getMonitoringDeviceOnOffMethod = Co2MonitoringServiceGrpc.getMonitoringDeviceOnOffMethod) == null) {
-      synchronized (Co2MonitoringServiceGrpc.class) {
-        if ((getMonitoringDeviceOnOffMethod = Co2MonitoringServiceGrpc.getMonitoringDeviceOnOffMethod) == null) {
-          Co2MonitoringServiceGrpc.getMonitoringDeviceOnOffMethod = getMonitoringDeviceOnOffMethod = 
-              io.grpc.MethodDescriptor.<co2MonitoringService.DeviceRequest, co2MonitoringService.DeviceResponse>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(
-                  "co2MonitoringService.Co2MonitoringService", "monitoringDeviceOnOff"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  co2MonitoringService.DeviceRequest.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  co2MonitoringService.DeviceResponse.getDefaultInstance()))
-                  .setSchemaDescriptor(new Co2MonitoringServiceMethodDescriptorSupplier("monitoringDeviceOnOff"))
-                  .build();
-          }
-        }
-     }
-     return getMonitoringDeviceOnOffMethod;
-  }
-
   private static volatile io.grpc.MethodDescriptor<co2MonitoringService.Co2Request,
       co2MonitoringService.Co2Response> getCo2EmissionMethod;
 
@@ -161,13 +129,6 @@ public final class Co2MonitoringServiceGrpc {
     }
 
     /**
-     */
-    public void monitoringDeviceOnOff(co2MonitoringService.DeviceRequest request,
-        io.grpc.stub.StreamObserver<co2MonitoringService.DeviceResponse> responseObserver) {
-      asyncUnimplementedUnaryCall(getMonitoringDeviceOnOffMethod(), responseObserver);
-    }
-
-    /**
      * <pre>
      *Bi-Directional
      * </pre>
@@ -186,13 +147,6 @@ public final class Co2MonitoringServiceGrpc {
                 co2MonitoringService.PowerRequest,
                 co2MonitoringService.PowerResponse>(
                   this, METHODID_POWER_SWITCH)))
-          .addMethod(
-            getMonitoringDeviceOnOffMethod(),
-            asyncUnaryCall(
-              new MethodHandlers<
-                co2MonitoringService.DeviceRequest,
-                co2MonitoringService.DeviceResponse>(
-                  this, METHODID_MONITORING_DEVICE_ON_OFF)))
           .addMethod(
             getCo2EmissionMethod(),
             asyncBidiStreamingCall(
@@ -234,14 +188,6 @@ public final class Co2MonitoringServiceGrpc {
     }
 
     /**
-     */
-    public void monitoringDeviceOnOff(co2MonitoringService.DeviceRequest request,
-        io.grpc.stub.StreamObserver<co2MonitoringService.DeviceResponse> responseObserver) {
-      asyncUnaryCall(
-          getChannel().newCall(getMonitoringDeviceOnOffMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
      * <pre>
      *Bi-Directional
      * </pre>
@@ -280,13 +226,6 @@ public final class Co2MonitoringServiceGrpc {
       return blockingUnaryCall(
           getChannel(), getPowerSwitchMethod(), getCallOptions(), request);
     }
-
-    /**
-     */
-    public co2MonitoringService.DeviceResponse monitoringDeviceOnOff(co2MonitoringService.DeviceRequest request) {
-      return blockingUnaryCall(
-          getChannel(), getMonitoringDeviceOnOffMethod(), getCallOptions(), request);
-    }
   }
 
   /**
@@ -317,19 +256,10 @@ public final class Co2MonitoringServiceGrpc {
       return futureUnaryCall(
           getChannel().newCall(getPowerSwitchMethod(), getCallOptions()), request);
     }
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<co2MonitoringService.DeviceResponse> monitoringDeviceOnOff(
-        co2MonitoringService.DeviceRequest request) {
-      return futureUnaryCall(
-          getChannel().newCall(getMonitoringDeviceOnOffMethod(), getCallOptions()), request);
-    }
   }
 
   private static final int METHODID_POWER_SWITCH = 0;
-  private static final int METHODID_MONITORING_DEVICE_ON_OFF = 1;
-  private static final int METHODID_CO2EMISSION = 2;
+  private static final int METHODID_CO2EMISSION = 1;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -351,10 +281,6 @@ public final class Co2MonitoringServiceGrpc {
         case METHODID_POWER_SWITCH:
           serviceImpl.powerSwitch((co2MonitoringService.PowerRequest) request,
               (io.grpc.stub.StreamObserver<co2MonitoringService.PowerResponse>) responseObserver);
-          break;
-        case METHODID_MONITORING_DEVICE_ON_OFF:
-          serviceImpl.monitoringDeviceOnOff((co2MonitoringService.DeviceRequest) request,
-              (io.grpc.stub.StreamObserver<co2MonitoringService.DeviceResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -421,7 +347,6 @@ public final class Co2MonitoringServiceGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new Co2MonitoringServiceFileDescriptorSupplier())
               .addMethod(getPowerSwitchMethod())
-              .addMethod(getMonitoringDeviceOnOffMethod())
               .addMethod(getCo2EmissionMethod())
               .build();
         }

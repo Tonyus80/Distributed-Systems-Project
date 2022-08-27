@@ -59,16 +59,13 @@ public final class Co2MonitoringServiceImpl {
       "est\022\014\n\004text\030\001 \001(\t\"\037\n\016DeviceResponse\022\r\n\005v" +
       "alue\030\001 \001(\t\",\n\nCo2Request\022\016\n\006carbon\030\001 \001(\002" +
       "\022\016\n\006oxygen\030\002 \001(\002\"\035\n\013Co2Response\022\016\n\006resul" +
-      "t\030\001 \001(\t2\260\002\n\024Co2MonitoringService\022X\n\013powe" +
+      "t\030\001 \001(\t2\312\001\n\024Co2MonitoringService\022X\n\013powe" +
       "rSwitch\022\".co2MonitoringService.PowerRequ" +
       "est\032#.co2MonitoringService.PowerResponse" +
-      "\"\000\022d\n\025monitoringDeviceOnOff\022#.co2Monitor" +
-      "ingService.DeviceRequest\032$.co2Monitoring" +
-      "Service.DeviceResponse\"\000\022X\n\013co2Emission\022" +
-      " .co2MonitoringService.Co2Request\032!.co2M" +
-      "onitoringService.Co2Response\"\000(\0010\001B2\n\024co" +
-      "2MonitoringServiceB\030Co2MonitoringService" +
-      "ImplP\001b\006proto3"
+      "\"\000\022X\n\013co2Emission\022 .co2MonitoringService" +
+      ".Co2Request\032!.co2MonitoringService.Co2Re" +
+      "sponse\"\000(\0010\001B2\n\024co2MonitoringServiceB\030Co" +
+      "2MonitoringServiceImplP\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {

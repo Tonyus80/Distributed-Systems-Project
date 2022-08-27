@@ -132,7 +132,7 @@ public void registeringCustomerByAdminService(Properties adminProp) {
 				
 				String result = ("Customer Name: " + value.getName() 
 												+ ", Tax No.: " + value.getTaxNo()
-												+ ", Payment Type:: " + value.getPaymentType());
+												+ ", Payment Type: " + value.getPaymentType());
 				
 				RegisterResponse reply = RegisterResponse.newBuilder().setResult(result).build();
 				responseObserver.onNext(reply);				
@@ -169,11 +169,8 @@ public void registeringCustomerByAdminService(Properties adminProp) {
 		customerList.add("Customer Name: Gabriel Murphy, Tax No.: 7048, Payment Type: monthly");
 
 		for (int i = 0; i <  customerList.size(); i++) {
-
 			DisplayResponse reply = DisplayResponse.newBuilder().setAllCustomers(customerList.get(i)).build();
-			
 			responseObserver.onNext(reply);
-			
 			System.out.println("Display details of Customer: " + i + "\n" + customerList.set(i, null) + "\n");			
 			
 			// error handling
@@ -203,7 +200,7 @@ public void registeringCustomerByAdminService(Properties adminProp) {
 		float totalPrice = (float) 0.00;
 		String message = "The total price of vehicle for customer:\n " + request.getCustomerName() + 
 															", for: "+ request.getNumberVehicle() + 
-															" vehicle, type: " + request.getVehicleType() + " is: € ";
+															" vehicle, type: " + request.getVehicleType() + " cost: € ";
 		
 		
 		String result = "";		

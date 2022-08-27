@@ -23,8 +23,6 @@ public class Co2MonitoringClient {
 		blockingStub = Co2MonitoringServiceGrpc.newBlockingStub(channel);
 		asyncStub = Co2MonitoringServiceGrpc.newStub(channel);
 
-
-		monitoringDeviceOnOff();
 		powerSwitch();
 		co2Emission();
 
@@ -35,18 +33,15 @@ public class Co2MonitoringClient {
 			// TODO Auto-generated method stub
 				System.out.println("-------------- Unary --------------");
 
-				
 				boolean input=false;
 				System.out.println("Want to turned ON Auto-renewal? "+input);
-				
-				
+
 				PowerRequest request= PowerRequest.newBuilder().setPower(input).build();
 				
-				// sending the message request & also receiving response 
+				// sending  message request &  receiving response
 				PowerResponse response=	blockingStub.powerSwitch(request);
 				
-				//priniting response from server
-				
+				//print response from the server
 				if(response.getPower()==true) {
 					System.out.println("Server response: Auto-renewal turned ON ");
 				}
@@ -54,22 +49,7 @@ public class Co2MonitoringClient {
 					System.out.println("Server response: Auto-renewal turned OFF ");
 				}
 		}
-			
-	
-	
-	private static void monitoringDeviceOnOff() {
-		String devStatus = "On";
 
-		//sent the request
-		DeviceRequest request = DeviceRequest.newBuilder().setText(devStatus).build();
-
-		//check the response
-		DeviceResponse response = blockingStub.monitoringDeviceOnOff(request);
-
-		System.out.println("Server responded; The Monitoring Device has been turned: " + response.getValue());
-		System.out.println("The status of the monitoring device has been completed.");
-		System.out.println("----------------------------------------------------------------\n");
-	}
 
 	//Bi-Directional
 	//Co2Emission monitoring
@@ -95,7 +75,6 @@ public class Co2MonitoringClient {
 		};
 
 		StreamObserver<Co2Request> requestObserver = asyncStub.co2Emission(responseObserver);
-
 		requestObserver.onNext(Co2Request.newBuilder().setCarbon(110).setOxygen(70).build());
 
 		//Mark the end of requests

@@ -7,17 +7,14 @@ import java.net.InetAddress;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Properties;
-
 import javax.jmdns.JmDNS;
 import javax.jmdns.ServiceInfo;
 import javax.swing.JOptionPane;
-
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
 
 import co2MonitoringService.Co2MonitoringServiceGrpc.Co2MonitoringServiceImplBase;
-//public class Co2MonitoringServer extends Co2MonitoringServiceGrpc.Co2MonitoringServiceImplBase {
 public class Co2MonitoringServer extends Co2MonitoringServiceImplBase {
 
 	public static void main(String[] args) {
@@ -106,12 +103,6 @@ public class Co2MonitoringServer extends Co2MonitoringServiceImplBase {
 			//Wait a bit
 			Thread.sleep(1200);
 
-			//System.out.println("Ready to unregister services");
-
-			//Unregister all services
-			//jmdns.unregisterAllServices();
-			//jmdns.unregisterService(serviceInfo);
-
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
 			e.printStackTrace();
@@ -121,7 +112,7 @@ public class Co2MonitoringServer extends Co2MonitoringServiceImplBase {
 		}
 	}
 
-
+	//TURN ON/OFF Auto renewal
 	//unary rpc 
 	@Override
 	public void powerSwitch(PowerRequest request,
@@ -141,27 +132,11 @@ public class Co2MonitoringServer extends Co2MonitoringServiceImplBase {
 		PowerResponse responce=PowerResponse.newBuilder().setPower(check).build();
 		responseObserver.onNext(responce);
 
-		// server proto files has completed the processing
+		// here where the server proto files has completed the process
 		responseObserver.onCompleted();
 
 	}
 
-
-	//Unary call
-	//TURN ON/OFF Auto renewal
-	@Override
-	public void monitoringDeviceOnOff(DeviceRequest request, StreamObserver<DeviceResponse> responseObserver) {
-
-		System.out.println("Receiving Monitoring Device status change request: " + request.getText());
-
-		DeviceResponse reply = DeviceResponse.newBuilder().setValue(request.getText()).build();
-
-		responseObserver.onNext(reply);
-		responseObserver.onCompleted();
-
-		System.out.println("Monitoring Device status changing request completed.");
-		System.out.println("----------------------------------------------------\n");
-	}
 
 	public StreamObserver<Co2Request> co2Emission(StreamObserver<Co2Response> responseObserver){
 		return new StreamObserver<Co2Request>() {
