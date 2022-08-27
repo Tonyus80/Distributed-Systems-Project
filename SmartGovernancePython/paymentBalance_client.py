@@ -1,6 +1,7 @@
 from __future__ import print_function
 
 import logging
+import time
 
 import payment_pb2
 import payment_pb2_grpc
@@ -8,21 +9,22 @@ import grpc
 
 
 def list_overdue_payer(stub):
-    print("Requesting people present in building")
+    print("Requesting list of overdue payer ")
 
-    features = stub.Liststaff(security_pb2.ListRequest(ask='How many people are in building'))
+    features = stub.Listoverduepayer(payment_pb2.ListRequest(ask='overdue payer list'))
     print("Client received")
     for feature in features:
-        print("Name: %s" % (feature.ans))
+        print("Name: %s" % feature.ans)
 
 
 # request to get Tax balance
 def get_tax_balance():
     # adding channel and port
     #  send request to server to check due date
-    # when server responds, print responsepip3
+    # when server responds, print response
     channel = grpc.insecure_channel('localhost:50074')
-    stub = payment_pb2_grpc.AmountTotalDueStub(channel)
+    stub = payment_pb2_grpc.AmountTotalDueStub(channel)###ORG
+    ####stub = payment_pb2_grpc.PaymentBalanceStub(channel)
     request = payment_pb2.PaymentRequest(
         text='Retrieve user payments balance.')
         #taxPayments='Retrieve user payments balance.')
@@ -79,6 +81,7 @@ def run_payment_confirmation():
     with grpc.insecure_channel('localhost:50074') as channel:
         stub = payment_pb2_grpc.AmountTotalDueStub(channel)
         send_request(stub)
+        time.sleep(2)
         print("-------------- Sever Side Streaming --------------")
         list_overdue_payer(stub)
 

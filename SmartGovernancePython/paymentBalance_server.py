@@ -18,27 +18,25 @@ class AmountTotalDueServicer(payment_pb2_grpc.AmountTotalDueServicer):
     def checkAmount(self, request, context):
         print("Request: " + request.text)
         response = payment_pb2.PaymentResponse()
-        response.value = 'User tax  amount is 250 euro.'
+        response.value = 'User tax amount is 250 euro.'
         return response
 
     # server receives stream of requests, sends back stream of responses
     def confirmTaxPayments(self, request_iterator, context):
         print('Request to confirm tax payment date')
-
         for taxPayments in request_iterator:
             yield taxPayments
 
 
-
     def Listoverduepayer(self, request, context):
-        print("Server received staff request: " + request.ask)
+        print("Server received Overdue Payer request: " + request.ask)
 
-        staff = ["Sam", "Lisa", "Jay", "John", "Shiobhan", "Jim", "Sandra", "Mark"]
-        for x in staff:
+        OverduePayer = ["Bob: Tax No:3456, Overdue €200", "Bart: Tax No:3657, Overdue €500", "Jimmy: Tax No:9416, Overdue €400", "John: Tax No:3123, Overdue €600", "Katia: Tax No:5456, Overdue €250", "Jack: Tax No:3267, Overdue €1200", "Sandra Tax No:3996,Overdue €700", "Mark Tax No:5634, Overdue €200"]
+        for x in OverduePayer:
             #print(x)
-            yield security_pb2.ListResponse(ans=x)
+            yield payment_pb2.ListResponse(ans=x)
             time.sleep(2)
-# REGISTERING SERVICE WITH ZEROCONFIG
+# Service is registered with zeroconfig
 
 def register_service():
     # adding events for when a service is added or removed
@@ -80,10 +78,6 @@ def register_service():
         browser.cancel()
         zeroconf_browser.close()
 
-
-
-
-
 # starting server on specified port
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
@@ -102,8 +96,6 @@ def serve():
     except KeyboardInterrupt:
         server.stop(0)
         
-
-
 
 if __name__ == '__main__':
     logging.basicConfig()
