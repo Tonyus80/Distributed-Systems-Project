@@ -28,7 +28,7 @@ public class Co2MonitoringClient {
 
 	}
 	
-	// preparing the message request
+	// preparing message request
 			private static void powerSwitch() {
 			// TODO Auto-generated method stub
 				System.out.println("-------------- Unary --------------");
@@ -75,7 +75,7 @@ public class Co2MonitoringClient {
 		};
 
 		StreamObserver<Co2Request> requestObserver = asyncStub.co2Emission(responseObserver);
-		requestObserver.onNext(Co2Request.newBuilder().setCarbon(110).setOxygen(70).build());
+		requestObserver.onNext(Co2Request.newBuilder().setOxygen(20).build());
 
 		//Mark the end of requests
 		requestObserver.onCompleted();

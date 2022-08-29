@@ -112,7 +112,7 @@ public class Co2MonitoringServer extends Co2MonitoringServiceImplBase {
 		}
 	}
 
-	//TURN ON/OFF Auto renewal
+
 	//unary rpc 
 	@Override
 	public void powerSwitch(PowerRequest request,
@@ -137,7 +137,6 @@ public class Co2MonitoringServer extends Co2MonitoringServiceImplBase {
 
 	}
 
-
 	public StreamObserver<Co2Request> co2Emission(StreamObserver<Co2Response> responseObserver){
 		return new StreamObserver<Co2Request>() {
 
@@ -146,8 +145,6 @@ public class Co2MonitoringServer extends Co2MonitoringServiceImplBase {
 
 				System.out.println("Receiving Co2 Emission request for: ");
 				System.out.println("Carbon Emission value: " + value.getCarbon() + "/g/km");
-
-
 				String result = "";
 
 				//Band A1
@@ -193,7 +190,6 @@ public class Co2MonitoringServer extends Co2MonitoringServiceImplBase {
 
 				Co2Response reply = Co2Response.newBuilder().setResult(result).build();
 				responseObserver.onNext(reply);
-
 
 			}
 
